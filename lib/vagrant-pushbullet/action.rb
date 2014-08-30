@@ -31,7 +31,6 @@ module VagrantPlugins
           env[:ui].error("Pushbullet plugin configuration has not yet been set up. \nPlease replace required values in config file: #{config_file} ")
         end
 
-        @machinfo = env[:machine]
         case action
         when :up
           notification(config, config_file) if state != :running && provision && config.is_config_valid
@@ -48,9 +47,15 @@ module VagrantPlugins
         devices = PushbulletConfig::DEVICES
         token = PushbulletConfig::TOKEN
         client = Washbullet::Client.new(token)
-        devices.each {|iden|
-          client.push_note(iden, "Vagrant Finished:  #{@machine}", '')
-        }
+        if(devices.length > 0)
+          devices.each {|iden|
+            client.push_note(iden, "Vagrant Finished:  #{@machine}", '')
+          }
+        else 
+            #push to all 
+            client.push_note('', "Vagrant Finished:  #{@machine}", '')
+        end
+
       end
     end
   end
