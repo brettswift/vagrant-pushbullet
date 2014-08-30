@@ -25,9 +25,8 @@ To notify all devices:
   - Leave the DEVICES variable empty in your config file.
 INFO
           @env.ui.info(guide)
-
-          client = Washbullet::Client.new('v1zUVfPeLEveoY8suYABuu9WmuZUDhItndujC7jkt9OgK')
           require config_file
+          client = Washbullet::Client.new(PushbulletConfig::TOKEN)
           enabled_devices = PushbulletConfig::DEVICES
 
           devices = client.devices.body["devices"]
