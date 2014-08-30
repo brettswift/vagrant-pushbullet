@@ -13,7 +13,7 @@ module VagrantPlugins
     def self.write_default_key
       content = <<-EOF
 module PushbulletConfig
-  TOKEN = "<pushbullet_token>" #required
+  TOKEN = "" #required
   DEVICES = [] #optional. MUST use quotes. NO empty strings.
 end
 EOF
