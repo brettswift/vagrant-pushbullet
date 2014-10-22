@@ -1,6 +1,6 @@
 require "pathname"
-require "vagrant-Pushbullet/version"
-require "vagrant-Pushbullet/plugin"
+require "vagrant-pushbullet/version"
+require "vagrant-pushbullet/plugin"
 
 module VagrantPlugins
   module Pushbullet
